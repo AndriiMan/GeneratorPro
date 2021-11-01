@@ -91,7 +91,6 @@ public class GenerateMenuTests {
     void getMealsSizeFromMenu() {
         MealType supper = new MealType("Supper");
         List<MenuItem> actualMenu = new Menu().generate(supper);
-
         Assertions.assertEquals(actualMenu.get(0).getMeals().size(), 2);
     }
 
