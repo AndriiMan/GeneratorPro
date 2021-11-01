@@ -3,98 +3,95 @@ package model;
 import java.util.List;
 
 public class Meal {
-
-    private Long id;
-
     private String name;
-
     private List<String> ingredients;
-
     private int caloriesPerStoGram;
     private int gram;
     private int pricePerStoGram;
-    private int calories;
-    private int price;
-
     private String type;
 
     public Meal() {
 
     }
 
-    public Meal(String name, List<String> ingredients, int caloriesPerStoGram, int gram, int pricePerStoGram, String type) {
-        this.name = name;
-        this.ingredients = ingredients;
-        this.caloriesPerStoGram = caloriesPerStoGram;
-        this.gram = gram;
-        this.pricePerStoGram = pricePerStoGram;
-        this.type = type;
-        this.calories = (gram * caloriesPerStoGram) / 100;
-        this.price = (pricePerStoGram * gram) / 100;
+    public Meal(MealBuilder mealBuilder) {
+        this.name = mealBuilder.name;
+        this.ingredients = mealBuilder.ingredients;
+        this.caloriesPerStoGram = mealBuilder.caloriesPerStoGram;
+        this.gram = mealBuilder.gram;
+        this.pricePerStoGram = mealBuilder.pricePerStoGram;
+        this.type = mealBuilder.type;
     }
 
+    public static class MealBuilder {
+        private String name;
+        private List<String> ingredients;
+        private int caloriesPerStoGram;
+        private int gram;
+        private int pricePerStoGram;
+        private String type;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+        public MealBuilder() {
+        }
 
-    public Long getId() {
-        return id;
-    }
+        public MealBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
 
-    public List<String> getIngredients() {
-        return ingredients;
-    }
+        public MealBuilder ingredients(List<String> ingredients) {
+            this.ingredients = ingredients;
+            return this;
+        }
 
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
+        public MealBuilder caloriesPerStoGram(int caloriesPerStoGram) {
+            this.caloriesPerStoGram = caloriesPerStoGram;
+            return this;
+        }
+
+
+        public MealBuilder gram(int gram) {
+            this.gram = gram;
+            return this;
+        }
+
+        public MealBuilder pricePerStoGram(int pricePerStoGram) {
+            this.pricePerStoGram = pricePerStoGram;
+            return this;
+        }
+
+
+        public MealBuilder type(String type) {
+            this.type = type;
+            return this;
+        }
+
+        public Meal build() {
+            return new Meal(this);
+        }
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public List<String> getIngredients() {
+        return ingredients;
     }
 
     public int getCaloriesPerStoGram() {
         return caloriesPerStoGram;
     }
 
-    public void setCaloriesPerStoGram(int caloriesPerStoGram) {
-        this.caloriesPerStoGram = caloriesPerStoGram;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public int getGram() {
         return gram;
-    }
-
-    public void setGram(int gram) {
-        this.gram = gram;
     }
 
     public int getPricePerStoGram() {
         return pricePerStoGram;
     }
 
-    public void setPricePerStoGram(int pricePerStoGram) {
-        this.pricePerStoGram = pricePerStoGram;
-    }
-
-    public int getCalories() {
-        return calories;
-    }
-
-    public int getPrice() {
-        return price;
+    public String getType() {
+        return type;
     }
 }

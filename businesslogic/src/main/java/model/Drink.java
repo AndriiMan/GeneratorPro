@@ -9,77 +9,78 @@ public class Drink {
     private int caloriesPerStoGram;
     private int gram;
     private int pricePerStoGram;
-    private int calories;
-    private int price;
 
     public Drink() {
 
     }
 
-    public Drink(String name, List<String> ingredients, int caloriesPerStoGram, int gram, int pricePerStoGram) {
-        this.name = name;
-        this.ingredients = ingredients;
-        this.caloriesPerStoGram = caloriesPerStoGram;
-        this.gram = gram;
-        this.pricePerStoGram = pricePerStoGram;
-        this.calories = (gram * caloriesPerStoGram) / 100;
-        this.price = (pricePerStoGram * gram) / 100;
+    public Drink(DrinkBuilder drinkBuilder) {
+        this.name = drinkBuilder.name;
+        this.ingredients = drinkBuilder.ingredients;
+        this.caloriesPerStoGram = drinkBuilder.caloriesPerStoGram;
+        this.gram = drinkBuilder.gram;
+        this.pricePerStoGram = drinkBuilder.pricePerStoGram;
     }
 
+    public static class DrinkBuilder {
+
+        private String name;
+        private List<String> ingredients;
+        private int caloriesPerStoGram;
+        private int gram;
+        private int pricePerStoGram;
+
+        public DrinkBuilder() {
+        }
+
+        public DrinkBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public DrinkBuilder ingredients(List<String> ingredients) {
+            this.ingredients = ingredients;
+            return this;
+        }
+
+        public DrinkBuilder caloriesPerStoGram(int caloriesPerStoGram) {
+            this.caloriesPerStoGram = caloriesPerStoGram;
+            return this;
+        }
+
+        public DrinkBuilder gram(int gram) {
+            this.gram = gram;
+            return this;
+        }
+
+        public DrinkBuilder pricePerStoGram(int pricePerStoGram) {
+            this.pricePerStoGram = pricePerStoGram;
+            return this;
+        }
+
+        public Drink build() {
+            return new Drink(this);
+        }
+
+    }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
-    }
-
     public int getCaloriesPerStoGram() {
         return caloriesPerStoGram;
-    }
-
-    public void setCaloriesPerStoGram(int caloriesPerStoGram) {
-        this.caloriesPerStoGram = caloriesPerStoGram;
     }
 
     public int getGram() {
         return gram;
     }
 
-    public void setGram(int gram) {
-        this.gram = gram;
-    }
-
     public int getPricePerStoGram() {
         return pricePerStoGram;
-    }
-
-    public void setPricePerStoGram(int pricePerStoGram) {
-        this.pricePerStoGram = pricePerStoGram;
-    }
-
-    public int getCalories() {
-        return calories;
-    }
-
-    public void setCalories(int calories) {
-        this.calories = calories;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 }

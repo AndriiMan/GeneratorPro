@@ -4,9 +4,7 @@ import java.util.List;
 
 public class MenuItem {
     private MealType typeOfDayMeal;
-
     private List<Meal> meals;
-
     private Drink drink;
 
 
