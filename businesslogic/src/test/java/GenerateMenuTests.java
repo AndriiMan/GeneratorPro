@@ -89,8 +89,8 @@ public class GenerateMenuTests {
 
         //Assertions.assertEquals(actualMenu.get(0).getDrink().getName(), (expexted1));
         Assertions.assertTrue(actualMenu.get(0).getDrink().getName().equals(expexted1) ||
-                actualMenu.get(0).getMeals().get(0).getName().equals(expexted2) ||
-                actualMenu.get(0).getMeals().get(0).getName().equals(expexted3)
+                actualMenu.get(0).getDrink().getName().equals(expexted2) ||
+                actualMenu.get(0).getDrink().getName().equals(expexted3)
         );
     }
 
